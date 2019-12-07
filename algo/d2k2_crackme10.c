@@ -38,21 +38,22 @@ void process_serial(char *name, char *serial_out)
 	for (int i = 0; i < 16; i++)
 		buffer2[i] = i;
 
-
-	for (int i = 0; i < 16; i++)
+	//0040153B - alters MD5 hash.
+	for (int k = 0; k < 16; k++)
 	{
-		Register EAX, EDX,EBX;
-		EAX.ex= md5_hash[i];
-		EDX = EAX;
-		EAX.b.lo &= 0xF;
-		EDX.b.lo >>= 4;
-		EBX.b.lo = buffer2[EAX.ex];
-		int temp = EBX.b.lo;
-		buffer2[EAX.ex] = buffer2[EDX.ex];
-		buffer2[EDX.ex] = EBX.b.lo;
-		buffer2[i] += EBX.b.lo;
-		buffer2[i] ^= 0x17;
-
+		for (int i = 0; i < 16; i++)
+		{
+			Register EAX, EDX, EBX;
+			EAX.ex = md5_hash[i];
+			EDX = EAX;
+			EAX.b.lo &= 0xF;
+			EDX.b.lo >>= 4;
+			EBX.b.lo = buffer2[EAX.ex];
+			buffer2[EAX.ex] = buffer2[EDX.ex];
+			buffer2[EDX.ex] = EBX.b.lo;
+			md5_hash[i] += EBX.b.lo;
+			md5_hash[i] ^= 0x17;
+		}
 	}
 	wsprintf(serial_out, "test");
 }
