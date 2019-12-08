@@ -24,10 +24,11 @@ void MD5(BYTE * data, ULONG len, BYTE* hash_data)
 	CryptReleaseContext(hProv, 0);
 }
 
-void process_serial(char *name, char *serial_out)
+void process_serial(char* name, char* serial_out)
 {
 	BYTE md5_hash[16] = { 0 };
-	BYTE buffer2[16] = { 0 };
+	BYTE buf1[16] = { 0 };
+	BYTE buf2[16] = { 0 };
 
 	unsigned char name2[50] = { 0 };
 	strcpy(name2, name);
@@ -35,9 +36,8 @@ void process_serial(char *name, char *serial_out)
 	int namelen = lstrlen(name2);
 	MD5((BYTE*)name2, namelen, (BYTE*)md5_hash);
 
-	for (int i = 0; i < 16; i++)
-		buffer2[i] = i;
-
+	for (int i = 0; i < 16; i++) buf1[i] = i;
+	//1234567890ABCDEF
 	//0040153B - alters MD5 hash.
 	for (int k = 0; k < 16; k++)
 	{
@@ -48,13 +48,17 @@ void process_serial(char *name, char *serial_out)
 			EDX = EAX;
 			EAX.b.lo &= 0xF;
 			EDX.b.lo >>= 4;
-			EBX.b.lo = buffer2[EAX.ex];
-			buffer2[EAX.ex] = buffer2[EDX.ex];
-			buffer2[EDX.ex] = EBX.b.lo;
+			EBX.b.lo = buf1[EAX.ex];
+			buf1[EAX.ex] = buf1[EDX.ex];
+			buf1[EDX.ex] = EBX.b.lo;
 			md5_hash[i] += EBX.b.lo;
 			md5_hash[i] ^= 0x17;
 		}
 	}
+
+	
+	for (int i = 0,k=0; i < 8; i++,k+=2)
+		buf2[i] = (buf1[k] << 4 )+ (buf1[k + 1] % 0x0F);
 	wsprintf(serial_out, "test");
 }
 
