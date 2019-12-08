@@ -12,7 +12,7 @@ char *about =
 
 #define MIN_NAME 3
 #define MAX_NAME 0x20
-#define MAX_SERIAL 70
+#define MAX_SERIAL 255
 #define BUTTON_COLOR			0x00000000
 #define BUTTON_TEXT_COLOR		0x00FFFFFF
 #define BUTTON_FRAME_COLOR		0x00FFFFFF
