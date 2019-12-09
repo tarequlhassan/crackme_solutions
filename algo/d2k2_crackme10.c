@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <intrin.h>
+#include <math.h>
 #include "d2k2_crackme10_base64.h"
 
 typedef union
@@ -24,6 +25,70 @@ void MD5(BYTE * data, ULONG len, BYTE* hash_data)
 	CryptGetHashParam(hHash, HP_HASHVAL, hash_data, &cbHash, 0);
 	CryptDestroyHash(hHash);
 	CryptReleaseContext(hProv, 0);
+}
+
+#define DIM   4
+#define SIZE  (DIM*DIM)
+#define EMPTY 0x10
+
+BYTE soduku[16][16] = { 0x10};
+
+int sodu_avail(int x, int y, unsigned char z)
+{
+	int i, j, bi, bj;
+
+	// number is already in this cell
+	if (soduku[x][y] == z) return 1;
+
+	// cell is empty
+	if (soduku[x][y] != EMPTY) return 0;
+
+	// check row and col
+	for (i = 0; i < SIZE; i++)
+	{
+		if (soduku[i][y] == z) return 0;
+		if (soduku[x][i] == z) return 0;
+	}
+
+	// check the box
+	bi = x / DIM;
+	bj = y / DIM;
+	for (i = bi * DIM; i < (bi + 1) * DIM; i++)
+		for (j = bj * DIM; j < (bj + 1) * DIM; j++)
+			if (soduku[i][j] == z) return 0;
+
+	// all checks successful passed
+	return 1;
+}
+
+void sodu_solve(int x, int y, int* f)
+{
+	int n, t;
+
+	if (*f == 1) return;                 // if finished -> go out
+	if (x == SIZE) *f = 1;              // if board filled -> set finish
+	else
+		for (n = 0; n < SIZE; n++)
+			if (sodu_avail(x, y, n))
+			{
+				/* Try n at row, col */
+				t = soduku[x][y];
+				soduku[x][y] = n;
+
+				/* Move on to next square */
+				if (y == SIZE - 1)
+				{
+					sodu_solve(x + 1, 0, f);
+					if (*f == 1) return;
+				}
+				else
+				{
+					sodu_solve(x, y + 1, f);
+					if (*f == 1) return;
+				}
+				/* Undo n at row, col (backtrack) */
+				soduku[x][y] = t;
+			}
 }
 
 void process_serial(char* name, char* serial_out)
@@ -83,17 +148,19 @@ void process_serial(char* name, char* serial_out)
 		base64_ptr++;
 	}*/
 
-
-	BYTE soduku[16][16] = { 0 };
-	for (int i=0;i<16;i++)
+	for (int i = 0; i < 16; i++)
 	{
-        soduku[i][i] = buf1[i];
+		for(int j = 0; j < 16; j++)
+		soduku[i][j] = EMPTY;
 	}
+	for (int i = 0; i < 16; i++)
+	soduku[i][i] = buf1[i];
+	int flag = 0;
+	sodu_solve(0, 0,&flag);
 
-	
 
 
-	BYTE b64encstr[255] = { 0 };
+	BYTE b64encstr[128] = { 0 };
 	base64_encode(b64encstr, soduku, 0x80);
 
 
