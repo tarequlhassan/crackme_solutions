@@ -5,6 +5,10 @@ This particular crackme is MSDOS based.
 You will need DOSBox and Turbo Debugger
 as well as UNP.
 */
+void init()
+{
+
+}
 
 void process_serial(char *name, char *serial_out)
 {

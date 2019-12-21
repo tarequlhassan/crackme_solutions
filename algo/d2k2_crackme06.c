@@ -17,6 +17,11 @@ typedef union
 
 #define BUFFER_SIZE 0x80
 
+void init()
+{
+
+}
+
 
 char base36enc(int num)
 {

@@ -6,6 +6,11 @@
 const BYTE validchar_tbl[] = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 #define validchar_tbllen 62
 
+void init()
+{
+
+}
+
 void process_serial(char* name, char* serial_out)
 {
 	int seriallen = strlen(name);

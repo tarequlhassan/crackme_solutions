@@ -2,6 +2,12 @@
 extern void _stdcall d2k2_crackme05_hash(DWORD* input, DWORD input_len, DWORD* output);
 
 #define BUFFER_SIZE 0x40
+void init()
+{
+
+}
+
+
 void process_serial(char *name, char *serial_out)
 {
 	unsigned char hashinp[BUFFER_SIZE] = { 0 };

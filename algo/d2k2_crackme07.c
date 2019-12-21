@@ -4,6 +4,11 @@
 
 #define BUFFER_SIZE 0x80
 
+void init()
+{
+
+}
+
 uint32_t crc32(const void* data, unsigned int length)
 {
 	static const uint32_t crc32tab[16] = {

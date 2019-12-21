@@ -15,6 +15,11 @@ void MD5(BYTE * data, ULONG len, BYTE* hash_data)
 	CryptReleaseContext(hProv, 0);
 }
 
+void init()
+{
+
+}
+
 void process_serial(char *name, char *serial_out)
 {
 	BYTE hash_bytes[16] = { 0 };

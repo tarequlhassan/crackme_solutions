@@ -1,4 +1,9 @@
 #include <windows.h>
+void init()
+{
+
+}
+
 
 void process_serial(char *name, char *serial_out)
 {

@@ -113,6 +113,11 @@ typedef union
 	struct { uint8_t lo, hi; }b;
 } Register;
 
+void init()
+{
+
+}
+
 void MD5(BYTE * data, ULONG len, BYTE* hash_data)
 {
 	HCRYPTPROV hProv = 0;

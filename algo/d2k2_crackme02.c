@@ -11,6 +11,10 @@ singleshot memory breakpoint on execution on the
 
 Then use Scylla to rebuild imports, etc.
 */
+void init()
+{
+
+}
 
 void process_serial(char *name, char *serial_out)
 {

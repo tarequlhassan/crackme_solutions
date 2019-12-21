@@ -49,6 +49,11 @@ typedef union
 
 extern void _stdcall d2k2_crackme08_hash(DWORD* output, DWORD input_len, DWORD* input);
 
+void init()
+{
+
+}
+
 
 
 void process_serial(char *name, char *serial_out)

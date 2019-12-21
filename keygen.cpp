@@ -5,6 +5,7 @@
 #include "dlg_colors.c"
 static BOOL CALLBACK DialogFunc(HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lParam);
 extern "C" void process_serial(char *name, char *serial);
+extern "C" void init();
 char *about =
 "Crackme solution\n"
 "keygenned by mudlord\n"
@@ -85,7 +86,7 @@ static BOOL CALLBACK DialogFunc(HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lP
 	char *data;
 	switch (msg) {
 	case WM_INITDIALOG:
-		srand(GetTickCount());
+		init();
 		loadmusic(0);
 		SetWindowText(hwndDlg, keygen_name);
 		SetDlgItemText(hwndDlg, IDC_NAME, default_name);

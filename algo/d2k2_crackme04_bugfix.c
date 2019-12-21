@@ -2,6 +2,12 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>
+
+void init()
+{
+
+}
+
 void process_serial(char *name, char *serial_out)
 {
     BYTE serial_buf[9] = { '0', '0','0', '0', '0', '0', '0', '0',0x0 };
