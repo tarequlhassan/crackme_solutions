@@ -3,6 +3,9 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+#define ECB 1
+#include "aes-min.h"
+
 //CRC32 determined using Ghidra
 int32_t crc32(int32_t namelen, uint8_t* buffer) {
 	
@@ -31,7 +34,8 @@ void init()
 
 void process_serial(char *name, char *serial_out)
 {
-	BYTE hash_bytes[16] = { 0 };
+	uint8_t block[AES_BLOCK_SIZE];
+	uint8_t key_schedule[AES128_KEY_SCHEDULE_SIZE];
 	int namelen = lstrlen(name);
 	
 	
@@ -41,6 +45,12 @@ void process_serial(char *name, char *serial_out)
 	//from key1.dat
 	//valid keydata with "Yonkie" username
 	BYTE key[0x10] = {0x6A, 0x53, 0x27, 0xF3, 0x84, 0x08, 0x8C, 0xC0, 0x03, 0x11, 0x56, 0x00, 0xDC, 0x43, 0x04, 0x19};
+
+
+
+	
+	aes128_key_schedule(key_schedule, aes_key);
+	//aes128_encrypt(block, key_schedule);
 
 	//calc checksum
 		int eax = key[0];

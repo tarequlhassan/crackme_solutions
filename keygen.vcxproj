@@ -135,6 +135,7 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="algo\aes-min.c" />
     <ClCompile Include="algo\bignum\bignum.c" />
     <ClCompile Include="algo\yonkie_crackme.c" />
     <ClCompile Include="keygen.cpp">
@@ -153,6 +154,7 @@
     <ResourceCompile Include="keygen.rc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="algo\aes-min.h" />
     <ClInclude Include="algo\bignum\bignum.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>

@@ -14,6 +14,9 @@
       <Filter>Algorithm\bn</Filter>
     </ClCompile>
     <ClCompile Include="algo\yonkie_crackme.c" />
+    <ClCompile Include="algo\aes-min.c">
+      <Filter>Algorithm</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="banner.bmp" />
@@ -28,6 +31,9 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="algo\bignum\bignum.h">
       <Filter>Algorithm\bn</Filter>
+    </ClInclude>
+    <ClInclude Include="algo\aes-min.h">
+      <Filter>Algorithm</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
