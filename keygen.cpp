@@ -19,7 +19,7 @@ char *about =
 #define BUTTON_FRAME_COLOR		0x00FFFFFF
 
 const char *keygen_name = "Crackme Keygen";
-const char *default_name = "mudlord";
+const char *default_name = "Mudlord";
 
 
 
