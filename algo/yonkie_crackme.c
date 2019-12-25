@@ -6,8 +6,6 @@
 #define ECB 1
 #include "aes-min.h"
 
-
-
 //CRC32 determined using Ghidra
 int32_t crc32(int32_t namelen, uint8_t* buffer) {
 	
@@ -33,8 +31,6 @@ void init()
 {
 	srand(GetTickCount());
 }
-
-
 
 struct keydata_format {
 	DWORD checksum;
@@ -66,10 +62,8 @@ void process_serial(char *name, char *serial_out)
 	int hash = 0;
 	do
 	{
-		struct keydata_format* hdr = (struct keydata_format*)buffer;
 		memcpy(buffer2, buffer, 0x10);
 		aes128_encrypt(buffer2, key_schedule);
-
 		hdr->random++;
 		if (hdr->random == 0);
 		hdr->serial++;
