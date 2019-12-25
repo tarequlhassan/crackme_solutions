@@ -56,7 +56,7 @@ void process_serial(char* name, char* serial_out)
 	hdr->random = 0;
 	hdr->serial = 0xDEADB00B;
 
-	int hash = 0;
+	uint32_t hash = 0;
 	do
 	{
 		memcpy(buffer2, buffer, 0x10);
