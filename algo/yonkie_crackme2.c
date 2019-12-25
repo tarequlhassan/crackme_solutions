@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <windows.h>
 #define ECB 1
-#include "aes-min.h"
+#include "lib/aes-min.h"
 
 // CRC32 determined using Ghidra
 int32_t crc32(int32_t namelen, uint8_t *buffer) {

@@ -135,8 +135,9 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="algo\aes-min.c" />
-    <ClCompile Include="algo\bignum\bignum.c" />
+    <ClCompile Include="algo\d2k2_crackme10.c" />
+    <ClCompile Include="algo\lib\aes-min.c" />
+    <ClCompile Include="algo\lib\bignum.c" />
     <ClCompile Include="algo\yonkie_crackme.c" />
     <ClCompile Include="keygen.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
@@ -154,8 +155,8 @@
     <ResourceCompile Include="keygen.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="algo\aes-min.h" />
-    <ClInclude Include="algo\bignum\bignum.h" />
+    <ClInclude Include="algo\lib\aes-min.h" />
+    <ClInclude Include="algo\lib\bignum.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
