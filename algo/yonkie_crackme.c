@@ -1,5 +1,4 @@
 #include <windows.h>
-#include <wincrypt.h>
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -74,7 +73,7 @@ void process_serial(char* name, char* serial_out)
 	for (uint8_t i = 0; i < 16; ++i)
 		sprintf(&buffer_str[i * 2], "%02X", (uint8_t)buffer2[i]);
 
-	wsprintf(serial_out, "N=%s K=%s", name, buffer_str);
+	sprintf(serial_out, "N=%s K=%s", name, buffer_str);
 }
 
 
