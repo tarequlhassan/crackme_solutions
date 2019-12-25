@@ -33,11 +33,11 @@ void init()
 }
 
 struct keydata_format {
-	DWORD checksum;
-	WORD feature_flags;
-	WORD magic;
-	DWORD serial;
-	DWORD random;
+	uint32_t checksum;
+	uint16_t feature_flags;
+	uint16_t magic;
+	uint32_t serial;
+	uint32_t random;
 };
 
 void process_serial(char *name, char *serial_out)
