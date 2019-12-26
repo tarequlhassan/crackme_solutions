@@ -59,7 +59,7 @@ void process_serial(char *name, char *serial_out) {
 
   aes128_key_schedule(key_schedule, aes_key);
 
-  do {
+ while (1) {
     memcpy(buffer2, buffer, 0x10);
     aes128_encrypt(buffer2, key_schedule);
     hdr->random++;
@@ -68,7 +68,9 @@ void process_serial(char *name, char *serial_out) {
     hash = 0;
     for (uint8_t i = 0; i < 12; i++)
       hash += buffer2[i];
-  } while ((buffer2[0x0E] != (hash >> 8)) || (buffer2[0x0F] != LOBYTE(hash)));
+    if ((buffer2[0x0E] == (hash >> 8)) && (buffer2[0x0F] == LOBYTE(hash)))
+      break;
+  };
 
   uint8_t buffer_str[33];
   for (uint8_t i = 0; i < 16; ++i)
