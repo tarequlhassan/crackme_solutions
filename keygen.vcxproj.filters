@@ -7,14 +7,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="keygen.cpp" />
-    <ClCompile Include="algo\yonkie_crackme.c" />
     <ClCompile Include="algo\lib\aes-min.c">
       <Filter>Algorithm</Filter>
     </ClCompile>
     <ClCompile Include="algo\lib\bignum.c">
       <Filter>Algorithm</Filter>
     </ClCompile>
-    <ClCompile Include="algo\d2k2_crackme10.c">
+    <ClCompile Include="algo\yonkie_crackme2.c">
       <Filter>Algorithm</Filter>
     </ClCompile>
   </ItemGroup>

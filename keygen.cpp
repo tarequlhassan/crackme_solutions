@@ -1,8 +1,9 @@
-#include "dlg_colors.c"
-#include "ft2play.c"
+
 #include "resource.h"
 #include <stdio.h>
 #include <windows.h>
+#include "dlg_colors.c"
+#include "ft2play.c"
 static BOOL CALLBACK DialogFunc(HWND hwndDlg, UINT msg, WPARAM wParam,
                                 LPARAM lParam);
 extern "C" void process_serial(char *name, char *serial);

@@ -2,6 +2,7 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <windows.h>
+#include <time.h>
 #define ECB 1
 #include "lib/aes-min.h"
 
@@ -28,7 +29,9 @@ int32_t crc32(int32_t namelen, uint8_t *buffer) {
   return result;
 }
 
-void init() {}
+void init() { 
+    srand(time(NULL));
+}
 
 struct keydata_format {
   uint32_t checksum;
@@ -52,7 +55,7 @@ void process_serial(char *name, char *serial_out) {
   hdr->feature_flags = 0xFFFF;
   hdr->magic = 0x1979;
   hdr->random = 0;
-  hdr->serial = 0xDEADB00B;
+  hdr->serial = rand();
 
   aes128_key_schedule(key_schedule, aes_key);
 
@@ -65,7 +68,7 @@ void process_serial(char *name, char *serial_out) {
     hash = 0;
     for (uint8_t i = 0; i < 12; i++)
       hash += buffer2[i];
-  } while (buffer2[0x0E] != (hash >> 8) || buffer2[0x0F] != (uint8_t)hash);
+  } while ((buffer2[0x0E] != (hash >> 8)) || (buffer2[0x0F] != LOBYTE(hash)));
 
   uint8_t buffer_str[33];
   for (uint8_t i = 0; i < 16; ++i)
