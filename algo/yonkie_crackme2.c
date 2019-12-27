@@ -7,7 +7,7 @@
 #include "lib/aes-min.h"
 
 // CRC32 determined using Ghidra
-int32_t crc32(int32_t namelen, uint8_t *buffer) {
+uint32_t crc32(int32_t namelen, uint8_t *buffer) {
 
   if (namelen <= 0) {
     return 0;
@@ -49,7 +49,7 @@ void process_serial(char *name, char *serial_out) {
                            0x49, 0x2D, 0x9E, 0x61, 0x83, 0xCF, 0x09, 0x6F};
   uint8_t key_buffer[AES_BLOCK_SIZE] = {0};
   uint8_t encrypted_buffer[AES_BLOCK_SIZE] = {0};
-  uint32_t hash = 0;
+  
   struct keydata_format *key = (struct keydata_format *)key_buffer;
   key->checksum = crc;
   key->feature_flags = 0xFFFF;
@@ -65,7 +65,7 @@ void process_serial(char *name, char *serial_out) {
     key->random++;
     if (key->random == 0)
       key->serial++;
-    hash = 0;
+    uint32_t hash = 0;
     for (uint8_t i = 0; i < 12; i++)
       hash += encrypted_buffer[i];
     if ((encrypted_buffer[0x0E] == (hash >> 8)) && (encrypted_buffer[0x0F] == LOBYTE(hash)))
