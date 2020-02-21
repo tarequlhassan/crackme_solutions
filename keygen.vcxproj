@@ -137,7 +137,7 @@
   <ItemGroup>
     <ClCompile Include="algo\lib\aes-min.c" />
     <ClCompile Include="algo\lib\bignum.c" />
-    <ClCompile Include="algo\yonkie_crackme2.c" />
+    <ClCompile Include="algo\zuma_crackme3.c" />
     <ClCompile Include="keygen.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
       <BasicRuntimeChecks Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">EnableFastChecks</BasicRuntimeChecks>
@@ -157,6 +157,9 @@
     <ClInclude Include="algo\lib\aes-min.h" />
     <ClInclude Include="algo\lib\bignum.h" />
     <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <MASM Include="algo\lib\mars_crypt.asm" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,23 +1,23 @@
 #include <stdbool.h>
-#include <wincrypt.h>
 #include <windows.h>
 
-void MD5(BYTE *data, ULONG len, BYTE *hash_data) {
-  HCRYPTPROV hProv = 0;
-  HCRYPTPROV hHash = 0;
-  CryptAcquireContext(&hProv, NULL, NULL, PROV_RSA_FULL, 0);
-  CryptCreateHash(hProv, CALG_MD5, 0, 0, &hHash);
-  CryptHashData(hHash, data, len, 0);
-  DWORD cbHash = 16;
-  CryptGetHashParam(hHash, HP_HASHVAL, hash_data, &cbHash, 0);
-  CryptDestroyHash(hHash);
-  CryptReleaseContext(hProv, 0);
-}
+extern void _stdcall mars_setkey(DWORD* input, DWORD input_len);
+extern void _stdcall mars_encrypt(DWORD* input, DWORD* output);
 
 void init() {}
 
 void process_serial(char *name, char *serial_out) {
-  BYTE hash_bytes[16] = {0};
+  char* mars_key = "FEABCBFFFF183461";
+  mars_setkey(mars_key, strlen(mars_key));
+  char namestr[0x10] = {0}; //pad out blocksize to match block coming out, sym crypt 101
+  char mars_out[0x10] = { 0 };
   int namelen = lstrlen(name);
+  int namesum = 0;
+
+  for (int i = 0; i < namelen; i++)
+      namesum += name[i];
+  wsprintf(namestr, "%lX", namesum);
+  mars_encrypt(namestr, mars_out);
+
   wsprintf(serial_out, "you got my love");
 }
