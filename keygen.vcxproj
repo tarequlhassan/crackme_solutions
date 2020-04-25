@@ -161,6 +161,9 @@
   <ItemGroup>
     <MASM Include="algo\lib\mars_crypt.asm" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="1500x500.bmp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets" />
