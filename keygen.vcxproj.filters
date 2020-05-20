@@ -7,16 +7,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="keygen.cpp" />
-    <ClCompile Include="algo\lib\aes-min.c">
-      <Filter>Algorithm</Filter>
-    </ClCompile>
-    <ClCompile Include="algo\lib\bignum.c">
-      <Filter>Algorithm</Filter>
-    </ClCompile>
     <ClCompile Include="algo\zuma_cryptokg1_fixedecx.c">
-      <Filter>Algorithm</Filter>
-    </ClCompile>
-    <ClCompile Include="algo\byteptr_kgnme1.c">
       <Filter>Algorithm</Filter>
     </ClCompile>
   </ItemGroup>
@@ -31,12 +22,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
-    <ClInclude Include="algo\lib\aes-min.h">
-      <Filter>Algorithm</Filter>
-    </ClInclude>
-    <ClInclude Include="algo\lib\bignum.h">
-      <Filter>Algorithm</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="1500x500.bmp" />

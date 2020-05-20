@@ -135,9 +135,6 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="algo\byteptr_kgnme1.c" />
-    <ClCompile Include="algo\lib\aes-min.c" />
-    <ClCompile Include="algo\lib\bignum.c" />
     <ClCompile Include="algo\zuma_cryptokg1_fixedecx.c" />
     <ClCompile Include="keygen.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
@@ -155,8 +152,6 @@
     <ResourceCompile Include="keygen.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="algo\lib\aes-min.h" />
-    <ClInclude Include="algo\lib\bignum.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
