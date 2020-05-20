@@ -135,9 +135,10 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="algo\byteptr_kgnme1.c" />
     <ClCompile Include="algo\lib\aes-min.c" />
     <ClCompile Include="algo\lib\bignum.c" />
-    <ClCompile Include="algo\zuma_crackme3.c" />
+    <ClCompile Include="algo\zuma_cryptokg1_fixedecx.c" />
     <ClCompile Include="keygen.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
       <BasicRuntimeChecks Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">EnableFastChecks</BasicRuntimeChecks>
@@ -157,9 +158,6 @@
     <ClInclude Include="algo\lib\aes-min.h" />
     <ClInclude Include="algo\lib\bignum.h" />
     <ClInclude Include="resource.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <MASM Include="algo\lib\mars_crypt.asm" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="1500x500.bmp" />

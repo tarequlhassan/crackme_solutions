@@ -13,7 +13,10 @@
     <ClCompile Include="algo\lib\bignum.c">
       <Filter>Algorithm</Filter>
     </ClCompile>
-    <ClCompile Include="algo\zuma_crackme3.c">
+    <ClCompile Include="algo\zuma_cryptokg1_fixedecx.c">
+      <Filter>Algorithm</Filter>
+    </ClCompile>
+    <ClCompile Include="algo\byteptr_kgnme1.c">
       <Filter>Algorithm</Filter>
     </ClCompile>
   </ItemGroup>
@@ -34,11 +37,6 @@
     <ClInclude Include="algo\lib\bignum.h">
       <Filter>Algorithm</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <MASM Include="algo\lib\mars_crypt.asm">
-      <Filter>Algorithm</Filter>
-    </MASM>
   </ItemGroup>
   <ItemGroup>
     <Image Include="1500x500.bmp" />
