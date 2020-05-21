@@ -15,7 +15,8 @@ typedef union {
 void init() {}
 
 void process_serial(char* name, char* serial_out) {
-    BYTE hash_bytes[16] = { 0 };
+    const char* lut = "XZMAJK";
+    BYTE hash_bytes[14] = { 0 };
     int namelen = lstrlen(name);
 
     Register eax_,edx_;
@@ -31,6 +32,8 @@ void process_serial(char* name, char* serial_out) {
         eax_.ex += eax_.ex;
         edx_.ex--;
     }
+
+    
    
     wsprintf(serial_out, "fuck!");
 }
